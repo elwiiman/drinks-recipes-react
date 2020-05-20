@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModalContext } from "../context/ModalContext";
 
 const Recipe = ({ recipe }) => {
+  //extract from Modal Context
+  const { setIdRecipe } = useContext(ModalContext);
+
   return (
     <div className="col-md-4 mb-3">
       <div className="card">
@@ -11,7 +15,13 @@ const Recipe = ({ recipe }) => {
           alt={`${recipe.strDrink}`}
         />
         <div className="card-body">
-          <button type="button" className="btn btn-block btn-primary">
+          <button
+            type="button"
+            className="btn btn-block btn-primary"
+            onClick={() => {
+              setIdRecipe(recipe.idDrink);
+            }}
+          >
             See Recipe
           </button>
         </div>
